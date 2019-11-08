@@ -98,7 +98,7 @@ class SortingRobot:
         """
         # Fill this out
         self.set_light_on()
-        self.swap_item()
+        self.swap_item()   #picks up first item
 
         while self.light_is_on():
             self.set_light_off() 
@@ -106,16 +106,18 @@ class SortingRobot:
                 self.move_right()
                 if self.compare_item() < 0:
                     self.swap_item()
-                elif self.compare_item() > 0:
+                elif self.compare_item() > 0:      #set light on if item needs to be moved
                     self.set_light_on()
                            
             #when robot reaches end of list, holding largest item
             self.swap_item()
             while self.can_move_left():
                 self.move_left()
-                if self.compare_item() is None or self.compare_item() > 0:
+                if self.compare_item() and self.compare_item() > 0:
                     self.swap_item()
-            self.swap_item() 
+            #when robot reaches beginning of list, holding smallest item, if light remains on, continue while loop
+            
+        #swap with item in first position (None)
         self.swap_item() 
 
 
