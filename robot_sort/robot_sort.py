@@ -98,22 +98,25 @@ class SortingRobot:
         """
         # Fill this out
         self.set_light_on()
+        self.swap_item()
+
         while self.light_is_on():
-            self.set_light_off()
-            self.swap_item()
+            self.set_light_off() 
             while self.can_move_right():
                 self.move_right()
-                if self.compare_item() is None or  self.compare_item() < 0:
+                if self.compare_item() < 0:
                     self.swap_item()
-                else:
+                elif self.compare_item() > 0:
                     self.set_light_on()
-            
+                           
+            #when robot reaches end of list, holding largest item
             self.swap_item()
             while self.can_move_left():
                 self.move_left()
                 if self.compare_item() is None or self.compare_item() > 0:
                     self.swap_item()
-                
+            self.swap_item() 
+        self.swap_item() 
 
 
 if __name__ == "__main__":
